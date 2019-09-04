@@ -5,7 +5,9 @@ public class app {
         System.out.println("hello world!");
         OrderOvertimeHandleThread oht = new OrderOvertimeHandleThread();
 
-        oht.run();
-        System.out.println("i'm new.");
+
+        new Thread(oht).start();
+
+        System.out.println("I'm running before thread's ending.");
     }
 }
