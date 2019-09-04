@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wang.crick.study.mybatis.UserMapper">
+
+    <select id="selectByName" resultType="cn.makinnet.User">
+		select id,nick_name, real_name, password , role_type AS role_type , address
+		from users
+		where nick_name = #{username} or real_name =#{username}
+	</select>
+
+    <insert id="add" parameterType="wang.crick.study.mybatis.User">
+		insert into z_user
+		(username , password , role_type , address)
+		values(#{username} , #{password} , #{roleType} , #{address} )
+	</insert>
+
+</mapper>
