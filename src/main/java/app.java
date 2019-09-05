@@ -6,7 +6,13 @@ public class app {
         OrderOvertimeHandleThread oht = new OrderOvertimeHandleThread();
 
 
-        new Thread(oht).start();
+        Thread t1 = new Thread(oht);
+        t1.setName("t1");
+        Thread t2 = new Thread(oht);
+        t2.setName("t2");
+
+        t1.start();
+        t2.start();
 
         System.out.println("I'm running before thread's ending.");
     }

@@ -3,11 +3,15 @@ package cn.makinnet.thread;
 
 public class OrderOvertimeHandleThread implements Runnable {
 
+    private int count = 10;
+
     @Override
     public void run() {
         System.out.println("start running...");
-        for (int i = 0; i < 5; i++) {
-            System.out.println("I'm running...round..." + (i + 1));
+
+        while(this.get_count() > 0){
+            this.reduce_count();
+            System.out.println("I'm "+ Thread.currentThread().getName() +" remain...count..." + this.get_count());
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -16,6 +20,14 @@ public class OrderOvertimeHandleThread implements Runnable {
         }
 
         System.out.println("end running...");
+    }
+
+    private synchronized int get_count(){
+        return this.count;
+    }
+
+    private synchronized void reduce_count(){
+        this.count--;
     }
 }
 
